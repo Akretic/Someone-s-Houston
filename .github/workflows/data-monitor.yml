@@ -15,7 +15,9 @@ jobs:
   monitor:
     # Dispatch/schedule only from reviewed main; never give a PR issue-write access.
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-24.04
+    runs-on:
+      group: akretic-public-ci
+      labels: [self-hosted, Linux, X64, akretic-public-ci]
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

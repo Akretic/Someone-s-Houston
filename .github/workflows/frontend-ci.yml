@@ -14,7 +14,9 @@ concurrency:
 jobs:
   report-web:
     name: Frontend tests and production build
-    runs-on: ubuntu-24.04
+    runs-on:
+      group: akretic-public-ci
+      labels: [self-hosted, Linux, X64, akretic-public-ci]
     timeout-minutes: 10
     defaults:
       run:

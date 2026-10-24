@@ -14,7 +14,9 @@ concurrency:
 jobs:
   node:
     name: Backend build and Node tests
-    runs-on: ubuntu-24.04
+    runs-on:
+      group: akretic-public-ci
+      labels: [self-hosted, Linux, X64, akretic-public-ci]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -33,7 +35,9 @@ jobs:
         run: npx --yes deno@2.7.5 test --frozen --allow-env --allow-sys=hostname --config backend/supabase/functions/deno.json backend/supabase/functions/_shared/report-models/ backend/supabase/functions/report-flow/ backend/supabase/functions/username-signup/
   python:
     name: Python import safeguards
-    runs-on: ubuntu-24.04
+    runs-on:
+      group: akretic-public-ci
+      labels: [self-hosted, Linux, X64, akretic-public-ci]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -47,7 +51,9 @@ jobs:
       - run: python -m unittest discover -s backend/test -p '*_test.py' -v
   database:
     name: Migrations and SQL access/publication tests
-    runs-on: ubuntu-24.04
+    runs-on:
+      group: akretic-public-ci
+      labels: [self-hosted, Linux, X64, akretic-public-ci]
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
